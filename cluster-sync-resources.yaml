@@ -1,0 +1,18 @@
+apiVersion: cluster.clusterpedia.io/v1alpha2
+kind: ClusterSyncResources
+metadata:
+  name: common
+spec:
+  syncResources:
+    - group: "apps"
+      resources:
+        - deployments
+    - group: ""
+      resources:
+        - services
+    - group: "networking.k8s.io"
+      resources:
+        - ingresses
+    - group: "devopstoolkitseries.com"
+      resources:
+        - "*"
