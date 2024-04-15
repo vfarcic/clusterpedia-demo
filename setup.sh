@@ -62,7 +62,7 @@ for INDEX in 01 02 03; do
     KUBECONFIG_ENC=$(cat kubeconfig-$INDEX.yaml | base64 -w 0)
 
     yq --inplace ".spec.kubeconfig = \"$KUBECONFIG_ENC\"" \
-        pediacluster-$INDEX.yaml
+        pediaclusters/dot-$INDEX.yaml
 
 done
 
@@ -120,6 +120,8 @@ for INDEX in 01 02; do
         --from-file creds=./azure-creds.json
 
 done
+
+echo "## Waiting for Crossplane packages..." | gum format
 
 for INDEX in 01 02; do
 
